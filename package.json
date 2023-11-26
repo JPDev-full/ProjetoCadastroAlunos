@@ -1,0 +1,26 @@
+{
+  "name": "sistema-gerenciamento-escola",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node ./src/index.ts",
+    "aluno": "ts-node ./src/alunos/aluno.ts",
+    "curso": "ts-node ./src/cursos/curso.ts",
+    "dcp": "ts-node ./src/disciplinas/disciplina.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/prompt-sync": "^4.2.3",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.6.2"
+  }
+}
