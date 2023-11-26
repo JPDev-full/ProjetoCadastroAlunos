@@ -1,5 +1,5 @@
-import { Curso } from "../cursos/curso.js";
-import { cursos } from "../cursos/curso.js";
+import { Curso } from "../classes/curso.js";
+import { cursos } from "../classes/curso.js";
 import { prompt } from "../index.js";
 
 export class Aluno {
