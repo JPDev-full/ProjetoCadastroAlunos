@@ -1,4 +1,4 @@
-import { Disciplina } from "../disciplinas/disciplina.js";
+import { Disciplina } from "../classes/disciplina.js";
 
 export class Curso {
   nome: string;
