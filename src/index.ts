@@ -1,12 +1,13 @@
 import PromptSync from "prompt-sync";
 export const prompt = PromptSync();
 
-import { cadastrarAluno } from "./classes/aluno.js";
-import { consultarAluno } from "./classes/aluno.js";
-import { removerAluno } from "./classes/aluno.js";
-import { atualizarAluno } from "./classes/aluno.js";
+import { Alunos } from "./classes/alunos.js";
+import { Cursos } from "./classes/cursos.js";
 
 let runprogram: boolean = true;
+const aluno = new Alunos();
+const curso = new Cursos();
+const disciplina = new Cursos();
 
 while (runprogram) {
   console.log(`
@@ -29,24 +30,24 @@ while (runprogram) {
       4. Atualizar ALUNO
       5. Voltar ao MENU principal\n`);
 
-      const opcaoSubMenu: string | null = prompt("Escolha uma opção:");
+      const menuAlunos: string | null = prompt("Escolha uma opção:");
 
-      switch (opcaoSubMenu) {
+      switch (menuAlunos) {
         case "1":
           console.clear();
-          cadastrarAluno();
+          aluno.cadastrar();
           break;
         case "2":
           console.clear();
-          consultarAluno();
+          aluno.consultar();
           break;
         case "3":
           console.clear();
-          removerAluno();
+          aluno.remover();
           break;
         case "4":
           console.clear();
-          atualizarAluno();
+          aluno.atualizar();
           break;
         case "5":
           console.clear();
