@@ -1,5 +1,5 @@
 export class Disciplinas {
-  private disciplinas: Disciplina[] = [];
+  disciplinas: IDisciplina[] = [];
 
   cadastrar(nome: string, cargaHoraria: number, nota: number | string): void {
     if (nota == "") {
@@ -49,7 +49,7 @@ export class Disciplinas {
   }
 }
 
-export interface Disciplina {
+export interface IDisciplina {
   nome: string;
   cargaHoraria: number;
   nota: number | string;
