@@ -1,7 +1,7 @@
 import { Cursos } from "./Cursos";
 
 export class Alunos {
-  private alunos: Aluno[] = [];
+  private alunos: {nome: string, idade: number, cursos?: Cursos[]}[] = [];
 
   cadastrar(nome: string, idade: number, cursos?: Cursos[]): void {
     this.alunos.push({ nome, idade, cursos });
@@ -41,10 +41,4 @@ export class Alunos {
     this.alunos[index] = { nome, idade, cursos };
     console.log("Aluno atualizado com sucesso!");
   }
-}
-
-export interface Aluno {
-  nome: string;
-  idade: number;
-  cursos?: Cursos[];
 }

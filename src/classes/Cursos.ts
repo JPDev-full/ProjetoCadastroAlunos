@@ -1,7 +1,7 @@
 import { Disciplinas } from "../classes/Disciplinas.js";
 
 export class Cursos {
-  cursos: ICursos[] = [];
+  private cursos: {nome: string,turno: string,disciplinas: Disciplinas[]}[] = [];
 
   cadastrar(nome: string, turno: string, disciplinas: Disciplinas[]): void {
     this.cursos.push({ nome, turno, disciplinas });
@@ -43,10 +43,14 @@ export class Cursos {
     this.cursos[index] = { nome, turno, disciplinas };
     console.log("Curso atualizado com sucesso!");
   }
+
+  obterCursoPorIndice(index: number):any | undefined {
+    if (index < 0 || index >= this.cursos.length) {
+      console.log("Índice inválido!");
+      return undefined;
+    }
+
+    return this.cursos[index];
+  }
 }
 
-export interface ICursos {
-  nome: string;
-  turno: string;
-  disciplinas: Disciplinas[];
-}

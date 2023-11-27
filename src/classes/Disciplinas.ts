@@ -1,5 +1,5 @@
 export class Disciplinas {
-  disciplinas: IDisciplina[] = [];
+  private disciplinas: {nome: string, cargaHoraria: number, nota: number | string}[] = [];
 
   cadastrar(nome: string, cargaHoraria: number, nota: number | string): void {
     if (nota == "") {
@@ -36,7 +36,7 @@ export class Disciplinas {
     cargaHoraria: number,
     nota: number | string
   ): void {
-    if (index < 0 || index >= this.disciplinas.length) {
+    if (index < 0 || index >= this.disciplinas.length || index == undefined || Number.isNaN(index)) {
       console.log("Índice inválido!");
       return;
     }
@@ -47,10 +47,13 @@ export class Disciplinas {
     this.disciplinas[index] = { nome, cargaHoraria, nota };
     console.log("Disciplina atualizada com sucesso!");
   }
-}
 
-export interface IDisciplina {
-  nome: string;
-  cargaHoraria: number;
-  nota: number | string;
+  obterDisciplinaPorIndice(index: number):any | undefined {
+    if (index < 0 || index >= this.disciplinas.length) {
+      console.log("Índice inválido!");
+      return undefined;
+    }
+
+    return this.disciplinas[index];
+  }
 }

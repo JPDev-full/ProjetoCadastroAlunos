@@ -1,7 +1,7 @@
 //#region Imports/Exports/Variaveis
 import PromptSync from "prompt-sync";
 import { Alunos } from "./classes/Alunos.js";
-import { Cursos } from "./classes/Cursos.js";
+import { Cursos} from "./classes/Cursos.js";
 import { Disciplinas } from "./classes/Disciplinas.js";
 
 export const prompt = PromptSync();
@@ -60,7 +60,7 @@ function gerenciarAlunos(): void {
         console.clear();
         const nome: string = prompt("Digite o nome do aluno: ");
         const idade: number = parseInt(prompt("Digite a idade do aluno: "));
-        const cursos: Cursos[] = []; 
+        const cursosAluno: Cursos[] = []; 
 
         let adicionarcurso: boolean = true;
         
@@ -69,11 +69,11 @@ function gerenciarAlunos(): void {
           console.log("\nCursos disponíveis:");
           cursosManager.consultar();
           let indiceCurso = parseInt(prompt("Digite o indice do curso escolhido: "));
-          if (indiceCurso < 0 || indiceCurso >= cursos.length) {
+          if (indiceCurso < 0 || indiceCurso >= cursosManager.consultar.length) {
             console.log("Índice inválido!");
             return;
           }
-          cursos.push(cursos[indiceCurso - 1])
+          cursosAluno.push(cursosManager.obterCursoPorIndice(indiceCurso - 1))
           console.log(`\nDeseja adicionar outro curso:
                         \n1- Sim
                         \n2- Nao`)
@@ -90,7 +90,7 @@ function gerenciarAlunos(): void {
               break;
           }
         }
-        alunosManager.cadastrar(nome, idade, cursos);
+        alunosManager.cadastrar(nome, idade, cursosAluno);
         break;
       case "2":
         console.clear();
@@ -215,42 +215,79 @@ function gerenciarCursos(): void {
     const menuOpcao: string | null = prompt("Escolha uma opção:");
 
     switch (menuOpcao) {
+      //Cadastrar
       case "1":
         console.clear();
         const nome = prompt("Digite o nome do curso:");
         const turno = prompt("Digite o turno do curso:");
-        const disciplinas = prompt("Digite a disciplina:");
 
-        //cursosManager.cadastrar(nome, turno, disciplinas);
+        const disciplinas: Disciplinas[] = []; 
+
+        //variavel para loop de adicionar mais de 1 disciplina
+        let adicionarDisciplina: boolean = true;
+
+        while(adicionarDisciplina){
+          console.clear();
+          console.log("\nDisciplinas disponíveis:");
+          disciplinasManager.consultar();
+          let indiceDisciplina = parseInt(prompt("Digite o indice da disciplina escolhida: "));
+          // if (indiceDisciplina < 0 || indiceDisciplina >= disciplinasManager.consultar.length) {
+          //   console.log("Índice inválido!");
+          //   return;
+          // }
+
+          disciplinas.push(disciplinasManager.obterDisciplinaPorIndice(indiceDisciplina - 1))
+          console.log(`\nDeseja adicionar outras disciplinas:
+                        \n1- Sim
+                        \n2- Nao`)
+          const opcao: string | null = prompt("Escolha uma opção:");
+          switch (opcao){
+            case "1":
+              break;
+            case "2":
+              adicionarDisciplina = false;
+              break;
+            default:
+              console.log("Opção inválida!");
+              adicionarDisciplina = false;
+              break;
+          }
+        }
+        cursosManager.cadastrar(nome, turno, disciplinas)
         break;
+      //Consultar
       case "2":
         console.clear();
         cursosManager.consultar();
         break;
+      //Remover
       case "3":
         console.clear();
-        disciplinasManager.consultar();
-        const indexRemover = parseInt(
-          prompt("Digite o índice da disciplina a ser removida:")
+        cursosManager.consultar();
+        const indiceRemocao = parseInt(
+          prompt("Digite o índice do curso a ser removido:")
         );
-        disciplinasManager.remover(indexRemover - 1);
+        cursosManager.remover(indiceRemocao - 1);
         break;
+      //Atualizar
       case "4":
         console.clear();
-        const indexAtualizar = parseInt(
-          prompt("Digite o índice da disciplina a ser atualizada:")
+        cursosManager.consultar();
+        const indiceAtualizacao = parseInt(
+          prompt("Digite o índice do curso a ser atualizado:")
         );
-        const nomeAtualizar = prompt("Digite o novo nome da disciplina:");
-        const cargaHorariaAtualizar = parseInt(
-          prompt("Digite a nova carga horária da disciplina:")
-        );
-        const notaAtualizar = prompt("Digite a nova nota da disciplina:");
-        disciplinasManager.atualizar(
-          indexAtualizar - 1,
-          nomeAtualizar,
-          cargaHorariaAtualizar,
-          notaAtualizar
-        );
+        console.clear()
+        const nomeAtualizacao = prompt("Digite o novo nome do curso:");
+        const turnoAtualizacao = prompt("Digite o novo turno do curso:");
+        //implementar a atualização das disciplinas no curso
+        // const notaAtualizacao = prompt("Digite a nova nota da disciplina:");
+
+        // cursosManager.atualizar(
+        //   indiceAtualizacao - 1,
+        //   nomeAtualizacao,
+        //   turnoAtualizacao,
+        //   notaAtualizacao
+        // );
         break;
       case "5":
         console.clear();
