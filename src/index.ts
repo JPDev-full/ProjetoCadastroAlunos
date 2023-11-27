@@ -1,8 +1,8 @@
 import PromptSync from "prompt-sync";
 export const prompt = PromptSync();
 
-import { Alunos } from "./classes/alunos.js";
-import { Cursos } from "./classes/cursos.js";
+import { Alunos } from "./classes/Alunos.js";
+import { Cursos } from "./classes/Cursos.js";
 
 let runprogram: boolean = true;
 const aluno = new Alunos();
