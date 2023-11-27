@@ -1,3 +1,4 @@
+//#region Imports/Exports/Variaveis
 import PromptSync from "prompt-sync";
 import { Alunos } from "./classes/Alunos.js";
 import { Cursos } from "./classes/Cursos.js";
@@ -8,7 +9,9 @@ export const prompt = PromptSync();
 const alunosManager = new Alunos();
 const cursosManager = new Cursos();
 const disciplinasManager = new Disciplinas();
+//#endregion
 
+//#region Menu Principal
 while (true) {
   console.log(`
   \nMENU:
@@ -37,7 +40,9 @@ while (true) {
       break;
   }
 }
+//#endregion
 
+//#region Menu de Alunos
 function gerenciarAlunos(): void {
   while (true) {
     console.log(`
@@ -105,11 +110,15 @@ function gerenciarAlunos(): void {
     }
   }
 }
+//#endregion
 
+//#region Menu de Cursos
 function gerenciarCursos(): void {
   // Implementar lógica para gerenciar cursos, se necessário
 }
+//#endregion
 
+//#region Menu de Disciplinas
 function gerenciarDisciplinas(): void {
   while (true) {
     console.log(`
@@ -171,3 +180,4 @@ function gerenciarDisciplinas(): void {
     }
   }
 }
+//#endregion
