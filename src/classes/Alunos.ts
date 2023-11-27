@@ -1,4 +1,4 @@
-import { Cursos } from "../classes/cursos.js";
+import { Cursos } from "../classes/Cursos.js";
 import { prompt } from "../index.js";
 
 export class Alunos {
