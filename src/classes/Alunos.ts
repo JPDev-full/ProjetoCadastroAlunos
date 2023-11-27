@@ -1,47 +1,50 @@
-import { Cursos } from "../classes/Cursos.js";
-import { prompt } from "../index.js";
+import { Cursos } from "./Cursos";
 
 export class Alunos {
-  nome: string = "";
-  idade: number = 0;
-  cursos: Cursos[] = [];
+  private alunos: Aluno[] = [];
 
-  constructor() {}
-
-  cadastrar(): void {
-    this.nome = prompt("Digite o nome do aluno:");
-    const idadeInput: string | null = prompt("Digite a idade do aluno:");
-    this.idade = idadeInput ? parseInt(idadeInput) : 0;
-
-    // console.log("\nCursos disponíveis:");
-    // Cursos.forEach((curso, index) => {
-    //   console.log(`${index + 1}. ${curso.nome}`);
-    // });
-
-    const cursoEscolhidoInput: string | null = prompt(
-      "Escolha o número do curso para o aluno:"
-    );
-    const cursoEscolhido: number = cursoEscolhidoInput
-      ? parseInt(cursoEscolhidoInput)
-      : 0;
-
-    if (cursoEscolhido <= 0 || cursoEscolhido > this.cursos.length) {
-      console.log("Curso inválido!");
-      return;
-    }
-
-    // this.cursos = ;
+  cadastrar(nome: string, idade: number, cursos?: Cursos[]): void {
+    this.alunos.push({ nome, idade, cursos });
+    console.log("Aluno cadastrado com sucesso!");
   }
 
   consultar(): void {
-    // Implementação da consulta
+    console.log("Lista de Alunos:");
+    this.alunos.forEach((aluno, index) => {
+      console.log(`${index + 1}. Nome: ${aluno.nome}, Idade: ${aluno.idade}`);
+    });
   }
 
-  remover(): void {
-    // Implementação da remoção
+  remover(index: number): void {
+    index++;
+    if (index <= 0 || index > this.alunos.length) {
+      console.log("Índice inválido!");
+      return;
+    }
+
+    this.alunos.splice(index, 1);
+    console.log("Aluno removido com sucesso!");
   }
 
-  atualizar(): void {
-    // Implementação da atualização
+  atualizar(
+    index: number,
+    nome: string,
+    idade: number,
+    cursos: Cursos[]
+  ): void {
+    index++;
+    if (index <= 0 || index > this.alunos.length) {
+      console.log("Índice inválido!");
+      return;
+    }
+
+    this.alunos[index] = { nome, idade, cursos };
+    console.log("Aluno atualizado com sucesso!");
   }
+}
+
+export interface Aluno {
+  nome: string;
+  idade: number;
+  cursos?: Cursos[];
 }
