@@ -5,11 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node ./src/index.ts",
-    "aluno": "ts-node ./src/alunos/aluno.ts",
-    "curso": "ts-node ./src/cursos/curso.ts",
-    "dcp": "ts-node ./src/disciplinas/disciplina.ts"
+    "build": "tsc",
+    "start": "ts-node ./src/index.ts"
   },
   "keywords": [],
   "author": "",
