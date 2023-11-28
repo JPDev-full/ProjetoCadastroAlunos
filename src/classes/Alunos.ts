@@ -1,7 +1,7 @@
 import { Cursos } from "./Cursos";
 
 export class Alunos {
-  private alunos: {nome: string, idade: number, cursos?: Cursos[]}[] = [];
+  private alunos: { nome: string; idade: number; cursos?: Cursos[] }[] = [];
 
   cadastrar(nome: string, idade: number, cursos?: Cursos[]): void {
     this.alunos.push({ nome, idade, cursos });
@@ -16,8 +16,12 @@ export class Alunos {
   }
 
   remover(index: number): void {
-    index++;
-    if (index <= 0 || index > this.alunos.length) {
+    if (
+      index < 0 ||
+      index >= this.alunos.length ||
+      index == undefined ||
+      Number.isNaN(index)
+    ) {
       console.log("Índice inválido!");
       return;
     }
@@ -32,8 +36,12 @@ export class Alunos {
     idade: number,
     cursos: Cursos[]
   ): void {
-    index++;
-    if (index <= 0 || index > this.alunos.length) {
+    if (
+      index < 0 ||
+      index >= this.alunos.length ||
+      index == undefined ||
+      Number.isNaN(index)
+    ) {
       console.log("Índice inválido!");
       return;
     }
