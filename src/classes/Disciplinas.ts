@@ -1,7 +1,11 @@
 export class Disciplinas {
-  private disciplinas: {nome: string, cargaHoraria: number, nota: number | string}[] = [];
+  private disciplinas: {
+    nome: string;
+    cargaHoraria: number;
+    nota?: number | string;
+  }[] = [];
 
-  cadastrar(nome: string, cargaHoraria: number, nota: number | string): void {
+  cadastrar(nome: string, cargaHoraria: number, nota?: number | string): void {
     if (nota == "") {
       nota = "Sem nota";
     }
@@ -21,7 +25,12 @@ export class Disciplinas {
   }
 
   remover(index: number): void {
-    if (index < 0 || index >= this.disciplinas.length) {
+    if (
+      index < 0 ||
+      index >= this.disciplinas.length ||
+      index == undefined ||
+      Number.isNaN(index)
+    ) {
       console.log("Índice inválido!");
       return;
     }
@@ -34,9 +43,14 @@ export class Disciplinas {
     index: number,
     nome: string,
     cargaHoraria: number,
-    nota: number | string
+    nota?: number | string
   ): void {
-    if (index < 0 || index >= this.disciplinas.length || index == undefined || Number.isNaN(index)) {
+    if (
+      index < 0 ||
+      index >= this.disciplinas.length ||
+      index == undefined ||
+      Number.isNaN(index)
+    ) {
       console.log("Índice inválido!");
       return;
     }
@@ -48,8 +62,13 @@ export class Disciplinas {
     console.log("Disciplina atualizada com sucesso!");
   }
 
-  obterDisciplinaPorIndice(index: number):any | undefined {
-    if (index < 0 || index >= this.disciplinas.length) {
+  obterDisciplinaPorIndice(index: number): any | undefined {
+    if (
+      index < 0 ||
+      index >= this.disciplinas.length ||
+      index == undefined ||
+      Number.isNaN(index)
+    ) {
       console.log("Índice inválido!");
       return undefined;
     }
