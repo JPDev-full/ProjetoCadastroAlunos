@@ -1,9 +1,13 @@
 import { Disciplinas } from "../classes/Disciplinas.js";
 
 export class Cursos {
-  private cursos: {nome: string,turno: string,disciplinas: Disciplinas[]}[] = [];
+  private cursos: {
+    nome: string;
+    turno: string;
+    disciplinas?: Disciplinas[];
+  }[] = [];
 
-  cadastrar(nome: string, turno: string, disciplinas: Disciplinas[]): void {
+  cadastrar(nome: string, turno: string, disciplinas?: Disciplinas[]): void {
     this.cursos.push({ nome, turno, disciplinas });
     console.log("Curso cadastrado com sucesso!");
   }
@@ -20,7 +24,12 @@ export class Cursos {
   }
 
   remover(index: number): void {
-    if (index < 0 || index >= this.cursos.length) {
+    if (
+      index < 0 ||
+      index >= this.cursos.length ||
+      index == undefined ||
+      Number.isNaN(index)
+    ) {
       console.log("Índice inválido!");
       return;
     }
@@ -33,19 +42,29 @@ export class Cursos {
     index: number,
     nome: string,
     turno: string,
-    disciplinas: Disciplinas[]
+    disciplinas?: Disciplinas[]
   ): void {
-    if (index < 0 || index >= this.cursos.length) {
+    if (
+      index < 0 ||
+      index >= this.cursos.length ||
+      index == undefined ||
+      Number.isNaN(index)
+    ) {
       console.log("Índice inválido!");
       return;
     }
-  
+
     this.cursos[index] = { nome, turno, disciplinas };
     console.log("Curso atualizado com sucesso!");
   }
 
-  obterCursoPorIndice(index: number):any | undefined {
-    if (index < 0 || index >= this.cursos.length) {
+  obterCursoPorIndice(index: number): any | undefined {
+    if (
+      index < 0 ||
+      index >= this.cursos.length ||
+      index == undefined ||
+      Number.isNaN(index)
+    ) {
       console.log("Índice inválido!");
       return undefined;
     }
@@ -53,4 +72,3 @@ export class Cursos {
     return this.cursos[index];
   }
 }
-
