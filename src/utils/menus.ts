@@ -56,8 +56,19 @@ export function menuAlunos() {
     switch (menuAlunosOpcao) {
       case "1":
         console.clear();
+        if (cursosManager.consultar() == undefined) {
+          console.clear();
+          console.log(
+            "Ainda não existem cursos cadastrados, realizar o cadastro de pelo menos um antes de cadastrar um aluno!"
+          );
+          return;
+        }
         const nome: string = prompt("Digite o nome do aluno: ");
         const idade: number = parseInt(prompt("Digite a idade do aluno: "));
+        if (Number.isNaN(idade) || idade == undefined) {
+          console.log("Idade invalida, aluno nao cadastrado!");
+          return;
+        }
         const cursosAluno: Cursos[] = [];
 
         let adicionarcurso: boolean = true;
@@ -79,8 +90,7 @@ export function menuAlunos() {
           }
           cursosAluno.push(cursoEscolhido);
           console.log(`\nDeseja adicionar outro curso:
-                        \n1- Sim
-                        \n2- Nao`);
+                        \n1- Sim\n2- Nao\n`);
           const opcao: string | null = prompt("Escolha uma opção:");
           switch (opcao) {
             case "1":
@@ -118,6 +128,10 @@ export function menuAlunos() {
         const idadeAtualizar = parseInt(
           prompt("Digite a nova idade do aluno:")
         );
+        if (Number.isNaN(idadeAtualizar) || idadeAtualizar == undefined) {
+          console.log("Idade invalida, aluno nao atualizado!");
+          return;
+        }
         const cursosAlunoAtualizados: Cursos[] = [];
 
         let atualizarCursoAluno: boolean = true;
@@ -140,8 +154,7 @@ export function menuAlunos() {
           }
           cursosAlunoAtualizados.push(cursoEscolhido);
           console.log(`\nDeseja adicionar outros cursos:
-                        \n1- Sim
-                        \n2- Nao`);
+                        \n1- Sim\n2- Nao\n`);
           const opcao: string | null = prompt("Escolha uma opção:");
           switch (opcao) {
             case "1":
@@ -194,6 +207,12 @@ export function menuDisciplinas() {
         const cargaHoraria = parseInt(
           prompt("Digite a carga horária da disciplina:")
         );
+        if (Number.isNaN(cargaHoraria) || cargaHoraria == undefined) {
+          console.log(
+            "Valor invalido para carga horaria, disciplina nao cadastrada!"
+          );
+          return;
+        }
         const nota = prompt("Digite a nota da disciplina:");
 
         disciplinasManager.cadastrar(nome, cargaHoraria, nota);
@@ -228,6 +247,15 @@ export function menuDisciplinas() {
         const cargaHorariaAtualizar = parseInt(
           prompt("Digite a nova carga horária da disciplina:")
         );
+        if (
+          Number.isNaN(cargaHorariaAtualizar) ||
+          cargaHorariaAtualizar == undefined
+        ) {
+          console.log(
+            "Valor invalido para carga horaria, disciplina nao atualizada!"
+          );
+          return;
+        }
         const notaAtualizar = prompt("Digite a nova nota da disciplina:");
         disciplinasManager.atualizar(
           indiceAtualizar - 1,
@@ -265,6 +293,13 @@ export function menuCursos() {
       //Cadastrar
       case "1":
         console.clear();
+        if (disciplinasManager.consultar() == undefined) {
+          console.clear();
+          console.log(
+            "Ainda não existem disciplinas cadastradas, realizar o cadastro de pelo menos uma antes de cadastrar um curso!"
+          );
+          return;
+        }
         const nome = prompt("Digite o nome do curso:");
         const turno = prompt("Digite o turno do curso:");
 
@@ -290,17 +325,20 @@ export function menuCursos() {
             return;
           }
           disciplinas.push(disciplinaEscolhida);
+          console.clear();
           console.log(`\nDeseja adicionar outras disciplinas:
-                        \n1- Sim
-                        \n2- Nao`);
+                        \n1- Sim\n2- Nao\n`);
           const opcao: string | null = prompt("Escolha uma opção:");
           switch (opcao) {
             case "1":
+              console.clear();
               break;
             case "2":
+              console.clear();
               adicionarDisciplina = false;
               break;
             default:
+              console.clear();
               console.log("Opção inválida!");
               adicionarDisciplina = false;
               break;
@@ -362,18 +400,17 @@ export function menuCursos() {
           }
           disciplinasCursoAtualizadas.push(disciplinaEscolhida);
           console.log(`\nDeseja adicionar outras disciplinas:
-                        \n1- Sim
-                        \n2- Nao`);
+                        \n1- Sim\n2- Nao\n`);
           const opcao: string | null = prompt("Escolha uma opção:");
           switch (opcao) {
             case "1":
               break;
             case "2":
-              adicionarDisciplina = false;
+              atualizarDisciplinaCurso = false;
               break;
             default:
               console.log("Opção inválida!");
-              adicionarDisciplina = false;
+              atualizarDisciplinaCurso = false;
               break;
           }
         }
