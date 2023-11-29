@@ -11,7 +11,11 @@ export class Alunos {
   consultar(): void {
     console.log("Lista de Alunos:");
     this.alunos.forEach((aluno, index) => {
-      console.log(`${index + 1}. Nome: ${aluno.nome}, Idade: ${aluno.idade}`);
+      console.log(
+        `${index + 1}. Nome: ${aluno.nome}, Idade: ${
+          aluno.idade
+        }, Cursos: ${JSON.stringify(aluno.cursos)}`
+      );
     });
   }
 
