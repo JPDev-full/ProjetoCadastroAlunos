@@ -281,7 +281,8 @@ export function menuCursos() {
           );
           if (disciplinaEscolhida == undefined) {
             console.clear();
-            console.log("Indice invalido!");
+            console.log("Indice de disciplina invalido!");
+            console.log("Curso não cadastrado!");
             return;
           }
           disciplinas.push(disciplinaEscolhida);

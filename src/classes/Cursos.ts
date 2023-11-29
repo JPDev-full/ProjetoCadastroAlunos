@@ -16,9 +16,9 @@ export class Cursos {
     console.log("Lista de Cursos:");
     this.cursos.forEach((curso, index) => {
       console.log(
-        `${index + 1}. Nome: ${curso.nome}, Turno: ${
+        `${index + 1}. Nome: ${curso.nome},Turno: ${
           curso.turno
-        }, Disciplinas: ${curso.disciplinas}`
+        },Disciplinas: ${JSON.stringify(curso.disciplinas)}`
       );
     });
   }
@@ -65,7 +65,6 @@ export class Cursos {
       index == undefined ||
       Number.isNaN(index)
     ) {
-      console.log("Índice inválido!");
       return undefined;
     }
 

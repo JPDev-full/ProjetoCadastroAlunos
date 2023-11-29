@@ -69,7 +69,6 @@ export class Disciplinas {
       index == undefined ||
       Number.isNaN(index)
     ) {
-      console.log("Índice inválido!");
       return undefined;
     }
 
