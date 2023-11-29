@@ -73,7 +73,8 @@ export function menuAlunos() {
             indiceCurso - 1
           );
           if (cursoEscolhido == undefined) {
-            console.log("Indice invalido!");
+            console.log("Indice do curso invalido!");
+            console.log("Aluno nao cadastrado!");
             return;
           }
           cursosAluno.push(cursoEscolhido);
@@ -101,6 +102,7 @@ export function menuAlunos() {
         break;
       case "3":
         console.clear();
+        alunosManager.consultar();
         const indexRemover = parseInt(
           prompt("Digite o índice do aluno a ser removido:")
         );
@@ -108,6 +110,7 @@ export function menuAlunos() {
         break;
       case "4":
         console.clear();
+        alunosManager.consultar();
         const indexAtualizar = parseInt(
           prompt("Digite o índice do aluno a ser atualizado:")
         );
@@ -131,7 +134,8 @@ export function menuAlunos() {
           );
           if (cursoEscolhido == undefined) {
             console.clear();
-            console.log("Indice invalido!");
+            console.log("Indice do curso invalido!");
+            console.log("Aluno nao Atualizado!");
             return;
           }
           cursosAlunoAtualizados.push(cursoEscolhido);
@@ -329,6 +333,7 @@ export function menuCursos() {
           cursosManager.obterCursoPorIndice(indiceAtualizacao - 1) == undefined
         ) {
           console.log("Indice invalido!");
+          console.log("Curso nao atualizado!");
           return;
         }
         console.clear();
@@ -351,7 +356,8 @@ export function menuCursos() {
           );
           if (disciplinaEscolhida == undefined) {
             console.clear();
-            console.log("Indice invalido!");
+            console.log("Indice da disciplina invalido!");
+            console.log("Curso nao atualizado!");
             return;
           }
           disciplinasCursoAtualizadas.push(disciplinaEscolhida);
