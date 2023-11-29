@@ -45,19 +45,9 @@ export class Disciplinas {
     cargaHoraria: number,
     nota?: number | string
   ): void {
-    if (
-      index < 0 ||
-      index >= this.disciplinas.length ||
-      index == undefined ||
-      Number.isNaN(index)
-    ) {
-      console.log("Índice inválido!");
-      return;
-    }
     if (nota == "") {
       nota = "Sem nota";
     }
-
     this.disciplinas[index] = { nome, cargaHoraria, nota };
     console.log("Disciplina atualizada com sucesso!");
   }
@@ -69,7 +59,6 @@ export class Disciplinas {
       index == undefined ||
       Number.isNaN(index)
     ) {
-      console.log("Índice inválido!");
       return undefined;
     }
 
