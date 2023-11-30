@@ -1,5 +1,13 @@
 # ProjetoCadastroAlunos
 
+![image](https://github.com/JPDev-full/ProjetoCadastroAlunos/assets/120661541/a8b41f53-b63c-4743-a8c7-7282c3831836)
+![image](https://github.com/JPDev-full/ProjetoCadastroAlunos/assets/120661541/7f67f4db-d6fa-457c-a57e-497b693f0351)
+![image](https://github.com/JPDev-full/ProjetoCadastroAlunos/assets/120661541/1cd31128-ca35-4f1e-a4b1-1dc181de3d77)
+![image](https://github.com/JPDev-full/ProjetoCadastroAlunos/assets/120661541/998e15d1-25cb-490e-8cdc-246804203a25)
+
+
+
+
 Objetivo
 
 - O projeto teve como objetivo a criação de um sistemas em typescript aonde é possível cadastrar alunos, cursos e disciplinas.
