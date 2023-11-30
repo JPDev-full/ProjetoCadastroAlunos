@@ -13,12 +13,12 @@ export class Cursos {
   }
 
   consultar(): void {
-    console.log("Lista de Cursos:");
+    console.log("Cursos Disponiveis:");
     this.cursos.forEach((curso, index) => {
       console.log(
-        `${index + 1}. Nome: ${curso.nome},Turno: ${
+        `${index + 1}. Nome: ${curso.nome}, Turno: ${
           curso.turno
-        },Disciplinas: ${JSON.stringify(curso.disciplinas)}`
+        }, Disciplinas: ${JSON.stringify(curso.disciplinas)}`
       );
     });
   }

@@ -53,4 +53,17 @@ export class Alunos {
     this.alunos[index] = { nome, idade, cursos };
     console.log("Aluno atualizado com sucesso!");
   }
+
+  obterAlunoPorIndice(index: number): any | undefined {
+    if (
+      index < 0 ||
+      index >= this.alunos.length ||
+      index == undefined ||
+      Number.isNaN(index)
+    ) {
+      return undefined;
+    }
+
+    return this.alunos[index];
+  }
 }
