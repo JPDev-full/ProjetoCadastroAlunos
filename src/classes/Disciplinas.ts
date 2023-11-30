@@ -14,7 +14,7 @@ export class Disciplinas {
   }
 
   consultar(): void {
-    console.log("Lista de Disciplinas:");
+    console.log("Disciplinas Disponiveis:");
     this.disciplinas.forEach((disciplina, index) => {
       console.log(
         `${index + 1}. Nome: ${disciplina.nome}, Carga Horária: ${

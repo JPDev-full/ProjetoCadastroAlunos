@@ -10,6 +10,7 @@ import {
 
 //#region Menu Principal
 export function menuPrincipal() {
+  console.clear();
   console.log(`
   \nMENU:
   1. Gerenciar Alunos
@@ -33,6 +34,7 @@ export function menuPrincipal() {
       console.clear();
       process.exit(0); // Encerrar o programa
     default:
+      console.clear();
       console.log("Opção inválida!");
       break;
   }
@@ -56,7 +58,7 @@ export function menuAlunos() {
     switch (menuAlunosOpcao) {
       case "1":
         console.clear();
-        if (cursosManager.consultar() == undefined) {
+        if (cursosManager.obterCursoPorIndice(0) == undefined) {
           console.clear();
           console.log(
             "Ainda não existem cursos cadastrados, realizar o cadastro de pelo menos um antes de cadastrar um aluno!"
@@ -75,7 +77,6 @@ export function menuAlunos() {
 
         while (adicionarcurso) {
           console.clear();
-          console.log("\nCursos disponíveis:");
           cursosManager.consultar();
           let indiceCurso = parseInt(
             prompt("Digite o indice do curso escolhido: ")
@@ -124,6 +125,10 @@ export function menuAlunos() {
         const indexAtualizar = parseInt(
           prompt("Digite o índice do aluno a ser atualizado:")
         );
+        if (alunosManager.obterAlunoPorIndice(indexAtualizar - 1) == undefined ) {
+           console.log("Indice do aluno invalido!")
+           return
+        }
         const nomeAtualizar = prompt("Digite o novo nome do aluno:");
         const idadeAtualizar = parseInt(
           prompt("Digite a nova idade do aluno:")
@@ -138,7 +143,6 @@ export function menuAlunos() {
 
         while (atualizarCursoAluno) {
           console.clear();
-          console.log("\nCursos disponíveis:");
           cursosManager.consultar();
           let indiceCurso = parseInt(
             prompt("Digite o indice do curso escolhido: ")
@@ -293,7 +297,7 @@ export function menuCursos() {
       //Cadastrar
       case "1":
         console.clear();
-        if (disciplinasManager.consultar() == undefined) {
+        if (disciplinasManager.obterDisciplinaPorIndice(0) == undefined) {
           console.clear();
           console.log(
             "Ainda não existem disciplinas cadastradas, realizar o cadastro de pelo menos uma antes de cadastrar um curso!"
@@ -310,7 +314,6 @@ export function menuCursos() {
 
         while (adicionarDisciplina) {
           console.clear();
-          console.log("\nDisciplinas disponíveis:");
           disciplinasManager.consultar();
           let indiceDisciplina = parseInt(
             prompt("Digite o indice da disciplina escolhida: ")
@@ -384,7 +387,6 @@ export function menuCursos() {
 
         while (atualizarDisciplinaCurso) {
           console.clear();
-          console.log("\nDisciplinas disponíveis:");
           disciplinasManager.consultar();
           let indiceDisciplina = parseInt(
             prompt("Digite o indice da disciplina escolhida: ")
